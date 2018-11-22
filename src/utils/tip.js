@@ -6,7 +6,7 @@ export default class Tips {
     this.isLoading = false;
   }
   /**
-   * 弹出提示框
+   * 
    */
 
   static success(title, duration = 500) {
