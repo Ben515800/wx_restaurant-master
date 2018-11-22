@@ -19,7 +19,6 @@ function getTimeStamp(){
   timeStamp = timeStamp/1000;
   return timeStamp;
 }
-//hhhhhhh
 function objLength(input) {
   var type = toString(input);
   var length = 0;
