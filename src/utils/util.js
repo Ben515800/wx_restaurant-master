@@ -1,4 +1,4 @@
-function getCurrentTime() {
+﻿function getCurrentTime() {
   var keep = '';
   var date = new Date();
   var y = date.getFullYear();
@@ -73,7 +73,7 @@ function div(a, b) {
   } catch (g) { }
   return c = Number(a.toString().replace(".", "")), d = Number(b.toString().replace(".", "")), mul(c / d, Math.pow(10, f - e));
 }
-//浮点型加法函数   
+//浮点型加法函数测试   
 function accAdd(arg1, arg2) {
   var r1, r2, m;
   try {
