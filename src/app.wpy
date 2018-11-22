@@ -1,0 +1,94 @@
+<style lang="less">
+@import "./styles/base";
+@import "./styles/icon";
+@import "./styles/style";
+
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/test',
+      'pages/testEdit',
+      'pages/testAddAddress',
+      'pages/authorize',
+      'pages/home',
+      'pages/orderList',
+      'pages/personalCenter',
+      'pages/address',
+      'pages/subscribe',
+      'pages/list',
+      'pages/foodMenuParce',
+      'pages/foodMenuOrder',
+      'pages/commitOrder',
+      'pages/orderDetail',
+    ],
+    subPackages:[
+      {
+        root:'packageA',
+        name:'packA',
+        pages:[
+          'pages/adminHome',
+          'pages/adminProManager',
+          'pages/adminProDetailManager',
+          'pages/adminProDetailAttrManager',       
+          'pages/adminOrderManager',
+          'pages/adminOrderDetail',
+          'pages/adminLogin'
+        ]
+      }
+    ],
+    // preloadRule:[
+    //   pages/personalCenter:{
+    //     network:'all',
+    //     packages:["packageA"]
+    //   }
+    // ],
+   window: {
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#FFFFFF',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: false,
+      backgroundColor: '#ffffff'
+    },
+    "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#ffffff",
+      "borderStyle": "white",
+      "backgroundColor": "#413d3c",
+        "list": [{
+        "pagePath": "pages/home",
+        "text": "首页",
+        "iconPath": "images/icon_home.png",
+        "selectedIconPath": "images/icon_home_select.png"
+      },{
+        "pagePath":"pages/orderList",
+        "text":"订单",
+        "iconPath": "images/icon_order.png",
+        "selectedIconPath":"images/icon_order_select.png"
+      },{
+        "pagePath":"pages/personalCenter",
+        "text":"我的",
+        "iconPath": "images/icon_my.png",
+        "selectedIconPath": "images/icon_my_select.png"       
+      }]
+    }
+  }
+
+  globalData = {
+  }
+
+  constructor () {
+    super()
+    this.use('requestfix')
+    this.use('promisify');
+  }
+
+  async onLaunch(option) {
+  }
+}
+</script>

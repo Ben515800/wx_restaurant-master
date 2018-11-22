@@ -1,0 +1,646 @@
+<style lang="less">
+	page{
+		background:#f2f2f2;
+	}
+	.empty_address{
+		background:#fff;
+		width:94%;
+		height:90rpx;
+		line-height:90rpx;
+		.title{
+			font-size:28rpx;
+			color:#999;
+			float:left;
+			margin-left:20rpx;
+		}
+		.icon_arrow_right{
+			float:right;
+			width:45rpx;
+			height:45rpx;
+			margin-top:23rpx;
+			margin-right:20rpx;
+		}
+	}
+
+	.address{
+		background:#fff;
+		width:94%;
+		height:145rpx;
+		margin-top:30rpx;
+		.icon_address{
+			width:40rpx;
+			height:40rpx;
+			margin-left:30rpx;
+			margin-top:50rpx;
+			float:left;
+		}
+		.address_detail{
+			font-size:28rpx;
+			color:#333;
+			position:relative;
+			top:30rpx;
+			left:20rpx;
+		}
+		.user_msg{
+			position:relative;
+			font-size:26rpx;
+			top:40rpx;
+			left:20rpx;
+		}
+		.icon_arrow_right{
+			float:right;
+			width:45rpx;
+			height:45rpx;
+			margin-right:20rpx;
+			margin-top:-20rpx;
+		}
+	}
+	.pro_list{
+		background:#fff;
+		margin-top:20rpx;
+		width:94%;
+		.pro_list_top{
+			margin-left:20rpx;
+			font-size:28rpx;
+			color:#333;	
+			height:60rpx;
+			line-height:60rpx;
+		}
+		.pro_list_content{
+
+		}
+		.pro_list_item{
+			background:#f2f3f2;
+			padding:20rpx;
+			margin-top:5rpx;
+			height:120rpx;
+			box-shadow:1px 0px 0px 0px #f2f3f2;
+			.image{
+				float:left;
+				width:120rpx;
+				height:120rpx;
+			}
+			.name{
+				float:left;
+				font-size:28rpx;
+				color:#333;
+				margin-left:15rpx;
+			}
+			.price{
+				display:block;
+				text-align:right;
+				font-size:28rpx;
+				color:#333;
+				width:100%;
+			}
+			.originPrice{
+				display:block;
+				text-align:right;
+				width:100%;
+				font-size:28rpx;
+				color:#999;
+				margin-top:8rpx;
+				text-decoration:line-through;
+			}
+			.attr{
+				float:left;
+				font-size:24rpx;
+				color:#999;
+				margin-left:15rpx;
+				margin-top:8rpx;
+			}
+			.num{
+				margin-left:15rpx;
+				font-size:28rpx;
+				color:#999;
+			}
+		}
+	}
+	.order_price{
+		width:94%;
+		height:120rpx;
+		background:#fff;
+		padding-top:20rpx;
+		.package_text{
+			float:left;
+			font-size:28rpx;
+			color:#333;
+			margin-left:20rpx;
+		}
+		.package_price{
+			display:block;
+			width:100%;
+			text-align:right;
+			position:relative;
+			right:20rpx;
+			font-size:28rpx;
+		}
+		.distribution_text{
+			float:left;
+			margin-top:20rpx;
+			font-size:28rpx;
+			color:#333;
+			margin-left:20rpx;
+		}
+		.distribution_price{
+			display:block;
+			width:100%;
+			text-align:right;
+			margin-top:20rpx;
+			position:relative;
+			right:20rpx;
+			font-size:28rpx;
+		}
+	}
+	.all_price{
+		background:#fff;
+		border-top:1rpx dashed #ccc;
+		height:70rpx;
+		width:94%;
+		line-height:70rpx;
+		text-align:right;
+		.all_price_text{
+			font-size:30rpx;
+			color:red;
+			margin-right:20rpx;
+		}
+	}
+	.order_content{
+		width:94%;
+		background:#fff;
+		margin-top:20rpx;
+		height:80rpx;
+		line-height:80rpx;
+		margin-bottom:45rpx;
+		.remark_text{
+			width:10%;
+			font-size:28rpx;
+			color:#333;
+			float:left;
+			margin-left:20rpx;
+		}
+		.remark_input{
+			float:left;
+			width:80%;
+			height:40rpx;
+			margin-top:15rpx;
+			margin-left:15rpx;
+			border-bottom:1rpx solid #f2f2f2;
+		}
+	}
+
+	.btn_pay{
+		position:relative;
+		bottom:0rpx;
+		background:#259b24;
+		height:90rpx;
+		line-height:90rpx;
+		color:#fff;
+		text-align:center;
+		.wx_pay{
+			font-size:34rpx;
+		}
+		.pay_price{
+			font-size:40rpx;
+		}
+	}
+
+	.btn_pay_cash{
+		position:relative;
+		bottom:0rpx;
+		background:#ffc400;
+		height:90rpx;
+		line-height:90rpx;
+		color:#fff;
+		text-align:center;
+		.wx_pay{
+			font-size:34rpx;
+		}
+		.pay_price{
+			font-size:40rpx;
+		}
+	}	
+
+	.mask{
+		width:100%;
+		height:100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background:#000;
+		z-index:9000;
+		opacity:0.7;
+	}
+
+	.switch_btn{
+		width:94%;
+		height:80rpx;
+		line-height:80rpx;
+		background:#fff;
+		text{
+			margin-left:15px;
+		}
+		switch{
+			float:right;
+			margin-right:10rpx;
+		}
+	}
+.wx-switch-input{width:42px !important;height:20px !important;}
+.wx-switch-input::before{width:42px !important;height: 20px !important;}
+.wx-switch-input::after{width: 18px !important;height: 18px !important;}//中间小圆球
+.get_time{
+	width:94%;
+	height:80rpx;
+	line-height:80rpx;
+	background:#fff;
+	margin-top:30rpx;
+	text{
+		margin-left:20rpx;
+	}
+	i{
+		margin-right:15rpx;
+		float:right;
+	}
+	picker{
+		float:right;
+		height:50rpx;
+		line-height:50rpx;	
+		margin-top:-30rpx;	
+		margin-right:10rpx;
+	}
+
+}
+.get_phone{
+	width:94%;
+	height:60rpx;
+	line-height:60rpx;
+	background:#fff;
+	padding-top:10rpx;
+	padding-bottom:10rpx;
+	text{
+		float:left;
+		margin-left:20rpx;
+	}
+	i{
+		margin-right:15rpx;
+		float:right;
+	}
+	view{
+		float:right;
+		margin-right:15rpx;
+	}
+}
+</style>
+<template>
+	<view style="height:{{wheight-45}}px;">
+	<scroll-view class="scroll_content" scroll-y style="padding:3%;height:{{wheight-45}}px">
+		<!-- 当店自取 -->
+			<view class="switch_btn" wx:if="{{type!=0}}">
+				<text>到店自取</text><switch bindchange="onSwitchChange"/>
+			</view>
+		<!-- 预约时间 -->
+			<view class="get_time" wx:if="{{isGetFood}}">
+				<text>取餐时间</text>
+				<i class="iconfont icon-pulldown"></i>
+				<picker mode="time" value="{{time}}" start="09:01" end="23:01" bindchange="bindTimeChange">
+    				<text class="picker">
+      					{{getTime}}
+    				</text>
+  				</picker>
+			</view>
+			<view class="get_phone" wx:if="{{isGetFood}}" @tap="setAddress">
+				<text>联系电话</text>
+				<i class="iconfont icon-arrowright"></i>
+				<view>{{getphone}}</view>
+			</view>
+		<!-- 我的地址 -->
+			<view class="empty_address" wx:if="{{!isExit&&type==1&&!isGetFood}}" @tap="setAddress">
+		        <text class="title">设置收货地址</text>
+        		<image class="icon_arrow_right" src="../images/icon_arrow_right.png"></image>
+      		</view>
+      		<view class="address" wx:if="{{isExit&&type==1&&!isGetFood}}"  @tap="setAddress">
+			<image class="icon_address" src="../images/icon_address.png"></image>
+			<view class="address_detail">
+				{{addressInfo.fProvinceId}}{{addressInfo.fCityId}}{{addressInfo.fAreaId}}{{addressInfo.fAddress}}
+			</view>
+			<view class="user_msg">
+				<text class="name">{{addressInfo.fName}}</text>
+				<text class="phone">{{addressInfo.fPhone}}</text>
+			</view>
+			<image class="icon_arrow_right" src="../images/icon_arrow_right.png"></image>
+			</view>
+		<!-- 商品列表 -->
+		<view class="pro_list">
+			<view class="pro_list_top">选购商品</view>
+			<view class="pro_list_content">
+				<view class="pro_list_item" wx:for="{{shopCart}}" wx:for-item="item" wx:key="index">
+					<image class="image" src="{{item.fGoodsImg}}"></image>
+					<text class="name">{{item.fGoodsName}}</text>
+					<text class="price">￥{{item.fBaseAmount}}</text>
+					<text class="attr">{{item.fAttrName1}}{{item.fAttrName2}}{{item.fAttrName3}}{{item.fAttrName4}}</text>
+					<!-- <text class="originPrice">￥{{item.originPrice}}</text> -->
+					<text class="num">x {{item.fNum}}</text>
+				</view>
+			</view>
+		</view>
+		<!-- 其他费用 -->
+		<view class="order_price" >
+			<text class="package_text" wx:if="{{type==1||type==2}}">包装费</text>
+			<text class="package_price" wx:if="{{type==1||type==2}}">￥{{shopInfo.fPackPrice}}</text>
+			<text class="distribution_text" wx:if="{{type==1}}">配送费</text>
+			<text class="distribution_price" wx:if="{{type==1}}">￥{{shopInfo.fDistributionPrice}}</text>
+		</view>
+		<view class="all_price">
+			小计
+			<text class="all_price_text">￥{{allPrice}}</text>
+		</view>
+		<!-- 其他 -->
+		<view class="order_content">
+			<text class="remark_text">备注</text>
+			<input class="remark_input" name="remark_input" bindinput="getRemarkInput"></input>
+		</view>
+	</scroll-view>
+	</view>
+	<view class="btn_pay" @tap="onPay" wx:if="{{payType==1}}">
+		<text class="wx_pay">微信支付</text>
+		<text class="pay_price">￥{{allPrice}}</text>
+	</view>
+	<view class="btn_pay_cash" wx:if="{{type==0&&payType==0}}" @tap="onPay">
+		<text class="wx_pay">提交订单</text>
+		<text class="pay_price">￥{{allPrice}}</text>
+	</view>
+
+<!-- 	<view class="mask" catchtouchmove="preventTouchMove" @tap="touchMask"></view>
+	<view class="address_modal">
+		<view class="modal_top">
+			<text class="text1">取消</text>
+			<text class="text2">我的收货地址</text>
+		</view>
+		<view class="modal_list">
+    		<addressList :list.sync="addressList" @currentPage.user="getCurrentPage"></addressList>
+		</view>
+		<view class="modal_bottom">新增收货地址</view>
+	</view> -->
+</template>
+<script>
+import wepy from 'wepy';
+import api from '@/api/api';
+import{
+	SYSTEM_INFO,
+	TOKEN,
+	ADDRESS_ID,
+	SHOPID,
+	CUSTID,
+	SHOP_CART
+} from '@/utils/constant'
+import tip from "../utils/tip"
+import util from "../utils/util"
+export default class CommitOrder extends wepy.page{
+	config = {
+		navigationBarTitleText:'提交订单',
+	}
+	components = {
+	}
+
+	data = {
+		wheight:0,
+		addressInfo:null,
+		isExit:false,
+		allPrice:0,//订单总价格
+		allProNum:0,
+		baseAmount:0,//商品总价格
+		type:'',//1:外卖、0:堂食
+		payType:'',//1：微信支付 、0：现金支付
+		shopId:'',
+		custId:'',
+		token:'',
+		remark:'',
+		tableNo:'',
+		shopInfo:{},
+		shopCart:[],
+		isGetFood:false,
+		getTime:'',
+		getphone:''
+	}
+
+	onLoad(option){
+			console.log("onLoad");
+			this.shopId = wepy.getStorageSync(SHOPID)||{};
+			this.custId = wepy.getStorageSync(CUSTID)||{};
+			this.token = wepy.getStorageSync(TOKEN)||{};
+			this.getShopMsg();//获取店铺信息
+			let systemInfo = wx.getStorageSync(SYSTEM_INFO);	
+			if(systemInfo==null||systemInfo==""||systemInfo==undefined){
+				systemInfo = wepy.getSystemInfoSync();
+        		wepy.setStorageSync(SYSTEM_INFO, systemInfo);	
+			}
+			this.wheight = systemInfo.windowHeight;
+			
+			this.type = option.type;
+			console.log("type",this.type)
+			this.payType = option.payType;
+			this.tableNo = option.tableNo;
+			if(this.tableNo==undefined){
+				this.tableNo = null;
+			}
+			this.shopCart = wepy.getStorageSync(SHOP_CART)||{};
+			console.log("tableNo===",this.tableNo);
+
+	}
+
+	onShow(){
+		//地址列表回调的时候调用onShow方法
+		console.log("onShow");
+		let addressId = wepy.getStorageSync(ADDRESS_ID)||'';
+		console.log("addressId===",addressId);
+		this.onGetAddress(addressId);
+	}
+
+	onHide(){
+		console.log("onHide");
+		wepy.setStorageSync(ADDRESS_ID,'');//当页面隐藏时初始化 addressId
+	}
+
+	onUnload(){
+		console.log("onUnload");
+		wepy.setStorageSync(ADDRESS_ID,'');//当页面隐藏时初始化 addressId	
+
+	}
+
+	getRemarkInput(e){
+		this.remark = e.detail.value;
+		console.log("订单备注:",this.remark);
+	}
+
+	//获取收货地址列表
+		async onGetAddress(id){
+			let that = this;
+			const json =await api.getAddressAll({
+				query:{
+					fShopId:this.shopId,
+					fCustId:this.custId,
+					fId:id,
+				}
+			});
+			console.log("onGetAddress",json);
+			if(json.data.code == 0){
+				console.log(json.data.data);
+				if(id==''){
+					//id为空，则查询列表，选择默认地址作为显示信息
+					for(let i=0;i<json.data.data.length;i++){
+						if(json.data.data[i].fIsDefault==1){
+							this.addressInfo  = json.data.data[i];
+							this.isExit = true;
+							break;
+						}
+					}
+				}else{
+					//id有值，则查询该id的地址信息
+					this.addressInfo = json.data.data[0];
+					this.isExit = true;
+				}
+				// console.log("addressInfo.length==",this.addressInfo.length);
+				if (this.addressInfo==null) {
+					this.isExit = false;
+				}
+				this.getphone = this.addressInfo.fPhone;
+			}else{
+				tip.error(json.data.msg);
+			}
+			console.log("取餐电话:",this.getphone)
+			console.log("is_exit_address",this.isExit);
+			console.log("当前默认地址",this.addressInfo);
+			that.showLoading = false;
+			this.$apply();
+		}
+
+		async getShopMsg(){
+			const json = await api.getShopInfo({
+				query:{
+					fShopId:this.shopId
+				}
+			});
+			console.log("getShopMsg===",json);
+			if(json.data.code == 0){
+				this.shopInfo = json.data.data[0];
+			}else{
+				tip.error("网络连接失败!");
+			}
+			this.onGetAllPrice();//计算总价格
+		}
+
+		onGetAllPrice(){
+			let allPrice = 0;
+			let num = 0;
+			for(let i = 0;i<this.shopCart.length;i++){
+				num+=this.shopCart[i].fNum;//购物车中的所有商品数量相加
+				allPrice+=this.shopCart[i].fAllAmount;//购物车中的所有商品金额相加
+			}
+			this.baseAmount = allPrice;
+			//如果是订单是外卖类型的，则需要加上包装费和运送费
+			
+			if(this.type==1){
+				this.allPrice = allPrice+this.shopInfo.fPackPrice+this.shopInfo.fDistributionPrice;			
+			}else{
+				this.allPrice = allPrice;
+			}
+			this.allProNum = num;
+			console.log("countShopCart===",this.allPrice,this.allProNum,this.shopCart);	
+			this.$apply();		
+		}
+
+		onSwitchChange(e){
+			var datetime = util.getCurrentTime().split(" ");
+			this.getTime = datetime[1];	
+			this.isGetFood = e.detail.value
+			if(e.detail.value){
+				this.type = 2
+			}else{
+				this.type = 1
+			}
+		}
+
+		bindTimeChange(e){
+			this.getTime = e.detail.value
+		}
+	
+	methods = {
+		setAddress(){
+     		wepy.navigateTo({
+        		url: "/pages/address?type=order"
+      		});			
+		},
+
+		async onPay(){
+			let token = wepy.getStorageSync(TOKEN)||{};
+			let shopId = wepy.getStorageSync(SHOPID)||{};
+			let custId = wepy.getStorageSync(CUSTID)||{};
+			let goodsData = [];
+
+			let orderNo;
+			if(this.type==0){
+				orderNo = 'TC'+util.getTimeStamp();
+				this.shopInfo.fDistributionPrice = 0
+				this.shopInfo.fPackPrice = 0
+			}else if(this.type==1){
+				orderNo = 'WM'+util.getTimeStamp();
+			}else if(this.type==2){
+				orderNo = 'ZQ'+util.getTimeStamp();
+				this.shopInfo.fDistributionPrice = 0
+			}
+			for(let i = 0 ;i<this.shopCart.length;i++){
+				this.shopCart[i].fEntryId = i+1;
+				this.shopCart[i].fOrderNo = orderNo
+			}
+			let status = 1;//0:待支付；1:已支付,待确认；2:待配送；3：配送中；4：已完成；5：已取消；6：已确认，待上菜
+			if(this.payType == 0){
+				status = 0
+			}
+			if(this.remark==''){
+				this.remark = null;
+			}
+
+			let currentDate = util.getCurrentTime();
+			console.log("当前下单时间:",currentDate);
+			if(this.getTime==''){
+				this.getTime = null
+			}
+
+			const json = await api.submitOrder({
+				query:{
+					token:token,
+					fShopId:shopId,
+					fCustId:custId,
+					fType:this.type,
+					fStatus:status,
+					fBasePrice:this.baseAmount,
+					fDisCount:0,
+					fNote:this.remark,
+					fDistributionPrice:this.shopInfo.fDistributionPrice,
+					fPackPrice:this.shopInfo.fPackPrice,
+					fDiscountPrice:0,
+					fReductionPrice:0,
+					fCouponId:null,
+					fAllAmount:this.allPrice,
+					fPayType:this.payType,
+					fGoodsData:this.shopCart,
+					fAddressId:this.addressInfo==null?null:this.addressInfo.fId,
+					fCouponPrice:0,
+					fOrderNo:orderNo,
+					fTable:0,
+					fDate:currentDate,
+					fGetTime:this.getTime
+				},
+				method:'POST'
+			});
+			console.log("提交订单===",json);
+			if(json.data.code == 0){
+				tip.toast("下单成功，请等待商家确认！");
+				wx.navigateBack({
+        			delta: 1
+      			})
+			}
+		}
+	}
+}
+</script>

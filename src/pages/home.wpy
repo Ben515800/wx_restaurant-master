@@ -1,0 +1,493 @@
+<template>
+	<view class="container">
+		<view class="top_box">
+	    <view wx:if="{{isAddressCover}}" class="address_cover">
+	    	<text class="address">{{address}}</text>
+    	</view>
+			<i class="iconfont icon-home-address" @tap="onAddresscover"></i>
+	    <view wx:if="{{isTimeCover}}" class="time_cover">
+	    	<text class="time">{{open_time}}</text>
+    	</view>
+			<i class="iconfont icon-home-time"  @tap="onTimecover"></i>
+	    <view wx:if="{{isNoticeCover}}" class="notice_cover">
+	    	<text class="notice">{{notice}}</text>
+    	</view>
+			<i class="iconfont icon-home-notice" @tap="onNoticecover"></i>			
+			<image class="logo" src="{{shop_logo}}"></image>
+			<view class="shopName textsize1">{{shop_name}}</view>
+		</view>
+
+		<view class="middle_box">
+			<view class="dish_container">
+			</image>
+			<view class="s">
+			<i class="iconfont icon-subscribe" style="color:#259b24" @tap="onSubscribe"></i>
+			<view>预约</view>
+			</view>
+			<view class="d">
+			<i class="iconfont icon-diner" style="color:#ff3d00" @tap="onOrder"></i>
+			<view>点餐</view>
+			</view>
+			<view class="p">
+			<i class="iconfont icon-parce" style="color:#ffc400" @tap="onParce"></i>
+			<view>外卖</view>
+			</view>
+			<view class="l">
+			<i class="iconfont icon-list" style="color:#795548" @tap="onList"></i>
+			<view>排队</view>	
+			</view>						
+		</view>
+		</view>
+	</view>
+</template>
+
+<style lang="less">
+	.address_cover{
+		background:#fff;
+		padding:8rpx 20rpx;
+		border-radius:30rpx;
+		font-size:28rpx;
+		color:#999;
+		position:absolute;
+		top:1vw;
+		left:16vw;
+		z-index:999;
+		opacity:0.9;
+	}
+	.time_cover{
+		background:#fff;
+		padding:8rpx 20rpx;
+		border-radius:30rpx;
+		font-size:28rpx;
+		color:#999;
+		position:absolute;
+		top:13vw;
+		left:16vw;
+		z-index:999;
+		opacity:0.9;
+	}
+	.notice_cover{
+		background:#fff;
+		padding:8rpx 20rpx;
+		border-radius:30rpx;
+		font-size:28rpx;
+		color:#999;
+		position:absolute;
+		top:25vw;
+		left:16vw;
+		z-index:999;
+		opacity:0.9;
+	}
+	.dish_container{
+		position:relative;
+		width:80%;
+		height:80vw;
+		background:#fff;
+		border-radius:360rpx;
+		margin-left:10%;
+		box-shadow: 5px 5px 1px #cdcdcd;
+		i{
+			font-size:80rpx;
+		}
+		.s{
+			position:absolute;
+			top:25%;
+			left:25%;
+			text-align:center;
+			view{
+				font-size:25rpx;
+				color:#999;
+			}
+		}
+		.d{
+			position:absolute;
+			top:25%;
+			right:25%;
+			text-align:center;
+			view{
+				font-size:25rpx;
+				color:#999;
+			}
+		}
+		.p{
+			position:absolute;
+			bottom:25%;
+			left:25%;
+			text-align:center;
+			view{
+				font-size:25rpx;
+				color:#999;
+			}
+		}
+		.l{
+			position:absolute;
+			bottom:25%;
+			right:25%;
+			text-align:center;
+			view{
+				font-size:25rpx;
+				color:#999;
+			}
+		}
+	}
+	.container{
+
+	}
+	.top_box{
+		position:relative;
+		width:100%;
+		height:500rpx;
+		text-align:center;
+		background:#413d3c;
+		margin-bottom:-200rpx;
+		.backg{
+			position:fixed;
+			left:0rpx;
+			top:0rpx;
+			bottom:0rpx;
+			height:500rpx;
+			width:100%;
+		}
+		.icon-home-address{
+			position:absolute;
+			font-size:60rpx;
+			color:#999;
+			left:3vw;
+		}
+		.icon-home-time{
+			position:absolute;
+			font-size:55rpx;
+			color:#999;
+			left:3vw;
+			top:12vw;
+		}
+		.icon-home-notice{
+			position:absolute;
+			font-size:55rpx;
+			color:#999;
+			left:3vw;
+			top:24vw;
+		}
+	}
+	.logo{
+		position:absolute;
+		width:20vw;
+		height:20vw;
+		border-radius:360rpx;
+		top:5vw;
+		left:40vw;
+	}
+	.shopName{
+		position:absolute;
+		color:#fff;
+		width:30vw;
+		font-weight:500;
+		top:27vw;
+		left:50%;
+		margin-left:-15vw;
+	}
+
+	.middle_box{
+		width:100%;
+		height:200rpx;
+		i{
+			position:relative;
+			z-index:9999;
+		}
+	}
+
+	.btn_subscribebox{
+		float:left;
+		height:150rpx;
+		width:20%;
+		text-align:center;
+		margin-left:7%;
+		image{
+			width:150rpx;
+			height:150rpx;
+		}
+		i{
+			position:relative;
+			bottom:110rpx;
+			font-size:50rpx;
+		}
+	}
+	.btn_orderbox{
+		float:left;
+		height:150rpx;
+		width:20%;
+		text-align:center;
+		margin-left:2%;
+		image{
+			width:150rpx;
+			height:150rpx;
+		}
+		i{
+			position:relative;
+			bottom:110rpx;
+			font-size:50rpx;
+		}
+	}
+	.btn_parcelbox{
+		float:left;
+		height:150rpx;
+		width:20%;
+		text-align:center;
+		margin-left:2%;
+		image{
+			width:150rpx;
+			height:150rpx;
+		}
+		i{
+			position:relative;
+			bottom:110rpx;
+			font-size:50rpx;
+		}
+	}
+	.btn_listbox{
+		float:left;
+		height:150rpx;
+		width:20%;
+		text-align:center;
+		margin-left:2%;
+		image{
+			width:150rpx;
+			height:150rpx;
+		}
+		i{
+			position:relative;
+			bottom:110rpx;
+			font-size:50rpx;
+		}
+	}
+	.bottom_box{
+		width:100%;
+	}
+	.opentime_box{
+		background:#ffffff;
+		width:86%;
+		height:80rpx;
+		line-height:80rpx;
+		border:0rpx solid #f2f2f2;
+		border-top-width:2rpx;
+		margin-left:7%;
+		margin-right:7%;
+	}
+	.contact_box{
+		background:#ffffff;
+		width:86%;
+		height:80rpx;
+		line-height:80rpx;
+		border:0rpx solid #f2f2f2;
+		border-top-width:2rpx;
+		margin-left:7%;
+		margin-right:7%;
+	}
+	.address_box{
+		background:#ffffff;
+		width:86%;
+		height:80rpx;
+		line-height:80rpx;
+		border:0rpx solid #f2f2f2;
+		border-top-width:2rpx;
+		border-bottom-width:2rpx;
+		margin-left:7%;
+		margin-right:7%;
+	}
+	.icon_arrow{
+		width:64rpx;
+		height:64rpx;
+		float:right;
+		margin-top:8rpx;
+	}
+
+	.textsize1{
+		font-size:36rpx;
+	}
+	.textsize2{
+		font-size:28rpx;
+	}
+	.textcolor1{
+		color:#000000;
+	}
+	.textcolor2{
+		color:#333333;
+	}
+	.textcolor3{
+		color:#666666;
+	}
+	.textcolor4{
+		color:#999999;
+	}
+</style>
+
+
+<script>
+import wepy from 'wepy';
+import api from '@/api/api';
+import tip from '@/utils/tip'
+import {
+	SHOPID,
+	SHOPPHONE
+} from '@/utils/constant';
+export default class Home extends wepy.page{
+	config = {
+		navigationBarTitleText:'首页',
+		navigationBarBackgroundColor: '#413d3c',
+		navigationBarTextStyle: 'white',
+	}
+
+	components = {
+
+	}
+	
+	data = {
+		shopId:'',
+		shop_logo:'',
+		shop_name:'',
+		open_time:'',
+		phone:'',
+		address:'',
+		notice:'',
+		latitude:'',
+		longitude:'',
+		isAddressCover:false,
+		isTimeCover:false,
+		isNoticeCover:false,
+	}
+
+	async onLoad(){
+		wx.getSystemInfo({
+			success:function(res){
+				
+				var version = res.SDKVersion;
+				version = version.replace(/\./g,"")
+				console.log("version===",version)
+			}
+		})
+		this.shopId = parseInt(wepy.getStorageSync(SHOPID)||{});
+		console.log(this.shopId)
+		//加载商户信息
+		this.getShopInfo();
+	}
+
+	//获取商家信息
+	async getShopInfo(){
+		let that = this;
+		let json = await api.getShopInfo({
+			query:{
+				fShopId:that.shopId
+			}
+		});
+		console.log(json);
+		if(json.data.code == 0){
+			//请求成功
+			let data = json.data.data[0];
+			that.open_time = data.fOpenTime+'-'+data.fCloseTime;
+			that.phone = data.fPhone;
+			wepy.setStorageSync(SHOPPHONE,that.phone);//保存商家手机号码，用于其它页面可直接获取
+			that.address = data.fAddress;
+			that.shop_name = data.fName;
+			that.latitude = data.fAddressX;
+			that.longitude = data.fAddressY;
+			this.notice = data.fNotice;
+			this.shop_logo = data.fLogo;
+
+			if(this.notice==null||this.notice==''){
+				this.notice = that.shop_name+"没啥可说的..."
+			}
+		}else{
+
+		}
+		that.$apply();
+	}
+
+	methods = {
+		showMap(){
+			let that = this;
+			wepy.openLocation({
+				latitude:that.latitude,
+				longitude:that.longitude
+			})
+		},
+		onSubscribe(e){
+			wx.navigateTo({
+				url: 'subscribe'
+			})
+		},
+		//店内点单
+		onOrder(e){
+			let tableNum = 1
+    				// wx.navigateTo({
+    				// 	url: 'foodMenuOrder?tableNum='+tableNum
+    				// })
+    				// return			
+			wx.scanCode({
+  				onlyFromCamera: true,
+  				scanType:'qCode',
+  				success:(res)=>{
+    				console.log("扫描桌面二维码success：",res);
+    				let tableNum = res.result;
+      				wx.navigateTo({
+    					url: 'foodMenuOrder?tableNo='+tableNum
+    				})
+  				},
+  				fail:(res)=>{
+  					console.log("扫描桌面二维码fail:",res);
+  				}
+			})
+		},
+		onParce(e){
+   			wx.navigateTo({
+    			url: 'foodMenuParce'
+    		})
+		},
+		onList(e){
+			// wx.navigateTo({
+   //  			url: 'list'
+   //  		});	
+			wx.scanCode({
+  				onlyFromCamera: true,
+  				scanType:'qCode',
+  				success:(res)=>{
+    				console.log("扫描店外小程序二维码success：",res);
+    				wx.navigateTo({
+    					url: 'list'
+    				})	
+  				},
+  				fail:(res)=>{
+  					console.log("扫描店外小程序二维码fail:",res);
+  				}
+			})
+		},
+		onAddresscover(){
+			let that = this;
+			this.isAddressCover=true;
+			setTimeout(function(){
+				that.isAddressCover = false;
+				that.$apply();
+			},3000);
+			this.$apply();
+		},
+		onTimecover(){
+			let that = this;
+			this.isTimeCover=true;
+			setTimeout(function(){
+				that.isTimeCover = false;
+				that.$apply();
+			},3000);
+			this.$apply();
+		},
+		onNoticecover(){
+			let that = this;
+			this.isNoticeCover=true;
+			setTimeout(function(){
+				that.isNoticeCover = false;
+				that.$apply();
+			},3000);
+			this.$apply();
+		}
+	}
+}
+</script>
+
