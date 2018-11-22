@@ -13,7 +13,7 @@
   return keep; //20160614134947
 }
 
-//获取时间戳
+//获取时间戳s
 function getTimeStamp(){
   var timeStamp = Date.parse(new Date());
   timeStamp = timeStamp/1000;
