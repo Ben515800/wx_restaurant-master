@@ -72,7 +72,7 @@ function div(a, b) {
   } catch (g) { }
   return c = Number(a.toString().replace(".", "")), d = Number(b.toString().replace(".", "")), mul(c / d, Math.pow(10, f - e));
 }
-//浮点型加法函数sssssssss 
+//浮点型加法函数 
 function accAdd(arg1, arg2) {
   var r1, r2, m;
   try {
